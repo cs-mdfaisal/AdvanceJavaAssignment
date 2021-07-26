@@ -17,6 +17,8 @@ public class NumSet {
 		numSet.add(100);
 		numSet.add(400);
 		
+		
+		
 		//iterating list using iterator
 				System.out.println("Using iterator");
 				Iterator<Integer> it=numSet.iterator();

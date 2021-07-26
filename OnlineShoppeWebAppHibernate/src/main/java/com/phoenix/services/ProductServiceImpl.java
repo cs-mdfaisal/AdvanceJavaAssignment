@@ -2,6 +2,7 @@ package com.phoenix.services;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import com.phoenix.daos.ProductDao;
@@ -52,19 +53,35 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> sortByPrice() throws ServiceException {
 		// TODO Auto-generated method stub
-		return null;
+		List<Product> dbProducts = findAll();
+		List<Product> prodList=new ArrayList<Product>();
+		//System.out.println("\nSorting according asc order of product price");
+		prodList.stream()
+			.sorted(Comparator.comparing(Product::getPrice))
+			.forEach(System.out::println);
+		return prodList;
 	}
 
 	@Override
 	public List<Product> sortByName() throws ServiceException {
 		// TODO Auto-generated method stub
-		return null;
+		//System.out.println("\nSorting according asc order of product name");
+		List<Product> dbProducts = findAll();
+		List<Product> prodList=new ArrayList<Product>();
+		prodList.sort(Comparator.comparing(Product::getName));
+		prodList.forEach(System.out::println);
+		return prodList;
 	}
 
 	@Override
 	public List<Product> sortByBrand() throws ServiceException {
 		// TODO Auto-generated method stub
-		return null;
+		List<Product> dbProducts = findAll();
+		List<Product> prodList=new ArrayList<Product>();
+		prodList.sort(Comparator.comparing(Product::getBrand));
+		prodList.forEach(System.out::println);
+		return prodList;
+	
 	}
 
 	@Override
